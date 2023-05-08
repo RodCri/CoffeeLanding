@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 @use 'variables' as v;
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 *{
   padding: 0;
   margin: 0;
@@ -12,4 +12,61 @@ html{
 body{
   font-size: 1.8rem;
   font-family: v.$body-font;
+}
+.header{
+  width: 100%;
+  max-width: 1400px;
+  background: url('../img/home.png') no-repeat top right;
+  background-size: 50% 100%;
+  background-color: v.$bg-header;
+  height: 1000px;
+  object-fit: cover;
+  margin: 0 auto;
+  .nav{
+    width: 100%;
+    height: 80px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__logo{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      .logo-title{
+        color: #fff;
+        font-size: 3rem;
+      }
+    }
+    &__options{
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 30px;
+      .option__item{
+        border-right: 2px solid #eae7e7;
+        padding: 0 20px;
+        opacity: .8;
+        .link__item{
+          text-decoration: none;
+          color: #fff;
+          font-family: v.$body-font;
+          font-size: 2rem;
+          opacity: .6;
+          &:hover{
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .hero{
+    width: 50%;
+    background-color: cadetblue;
+    color: #eae7e7;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+  }
 }
