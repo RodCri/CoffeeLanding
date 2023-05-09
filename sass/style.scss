@@ -1,4 +1,5 @@
 @use 'variables' as v;
+@use 'mixins' as m;
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 *{
   padding: 0;
@@ -12,6 +13,7 @@ html{
 body{
   font-size: 1.8rem;
   font-family: v.$body-font;
+  background-color: v.$bg-header;
 }
 .header{
   width: 100%;
@@ -22,6 +24,7 @@ body{
   height: 1000px;
   object-fit: cover;
   margin: 0 auto;
+  position: relative;
   .nav{
     width: 100%;
     height: 80px;
@@ -62,11 +65,172 @@ body{
   }
   .hero{
     width: 50%;
-    background-color: cadetblue;
+    height: 100%;
     color: #eae7e7;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding: 0 40px;
+    &::after{
+      content: '';
+      width: 250px;
+      height: 250px;
+      background: url('../img/scroll.png') no-repeat center center;
+      background-size: contain;
+      position: absolute;
+      top: calc(50% - 125px);
+      left: calc(50% - 125px);
+      object-fit: cover;
+    }
+    &__title{
+      font-size: 7.5rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      .title-point{
+        color: v.$first-color-alt;
+      }
+    }
+    &__info{
+      font-size: 2rem;
+      padding: 40px 0;
+      border-bottom: 2px solid v.$text-color;
+      margin-bottom: 20px;
+      color: v.$text-color;
+    }
+    &__quality{
+      display: flex;
+      margin: 30px 0;
+      justify-content: space-between;
+      .quality{
+        width: 45%;
+        height: 200px;
+        &__score{
+          font-size: 5.5rem;
+          color: v.$first-color-alt;
+          font-weight: 700;
+        }
+        &__name{
+          font-size: 2.2rem;
+          margin: 25px 0 20px;
+          font-weight: 700;
+        }
+        &__description{
+          font-size: 2.1rem;
+          color: v.$text-color;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
+.content{
+  background-color: #eae7e7;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  .make{
+    width: 95%;
+    padding: 30px;
+    margin: 0 auto;
+    &__header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .header__title{
+        width: 500px;
+        display: flex;
+        gap: 20px;
+        .title__info{
+          font-size: 3rem;
+          color: v.$title-color;
+          line-height: 1.5;
+        }
+        .title__step{
+          font-size: 2.8rem;
+          color: v.$first-color-alt;
+          font-weight: 700;
+        }
+      }
+      .header__cta{
+        .cta{
+          @include m.cta;
+        }
+      }
+    }
+    &__cards{
+      margin: 50px 0;
+      display: flex;
+      justify-content: space-between;
+      @media(max-width:920px){
+        flex-direction: column;
+      }
+      .card{
+        width: 400px;
+        height: 250px;
+        padding: 10px 40px;
+        position: relative;
+        &:nth-child(2)::after,&:nth-child(3)::after {
+          content: '';
+          width: 2px;
+          height: 140px;
+          background-color: v.$text-color;
+          position: absolute;
+          left: 0;
+          top: calc(50% - 70px);
+        }
+        &__icon{
+          width: 100px;
+          height: 100px;
+          margin-bottom: 20px;
+          cursor: pointer;
+          &:hover{
+            transform: translateY(-10px);
+            transition: all .3s ease;
+          }
+        }
+        &__title{
+          font-size: 3rem;
+          color: v.$title-color;
+          margin-bottom: 10px;
+        }
+        &__description{
+          font-size: 1.8rem;
+          color: v.$text-color;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+  .products{
+    width: 100%;
+    margin: 0 auto;
     padding: 40px;
+    &__categories{
+      width: 100%;
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+      .category{
+        &__name{
+          cursor: pointer;
+        }
+      }
+    }
+    .products__galery{
+      &::after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+      .card{
+        display: none;
+      }
+      .show {
+        display: block;
+      }
+    }
+    .active{
+      background-color: aqua;
+    }
   }
 }
