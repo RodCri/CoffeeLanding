@@ -1,0 +1,17 @@
+@use 'variables' as v;
+@mixin cta{
+  background-color: v.$bg-header;
+  text-transform: uppercase;
+  border: 2px solid v.$bg-header;
+  border-radius: 5px;
+  padding: 15px 25px;
+  color: v.$card-color;
+  letter-spacing: .2rem;
+  cursor: pointer;
+  &:hover{
+    background-color: v.$card-color;
+    color: v.$bg-header;
+    font-weight: 700;
+    transition: all .3s ease;
+  }
+}
