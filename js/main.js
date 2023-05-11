@@ -1,16 +1,15 @@
+filterSelection("all");
 function filterSelection(c) {
-  console.log(c)
   var x, i;
   x = document.getElementsByClassName("card");
-  console.log(x)
   if (c == "all") c = "";
   for (i = 0; i < x.length; i++) {
-    w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    removeClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
   }
 }
 
-function w3AddClass(element, name) {
+function addClass(element, name) {
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
@@ -19,7 +18,7 @@ function w3AddClass(element, name) {
   }
 }
 
-function w3RemoveClass(element, name) {
+function removeClass(element, name) {
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
@@ -33,12 +32,15 @@ function w3RemoveClass(element, name) {
 
 
 // Add active class to the current button (highlight it)
-var btnContainer = document.querySelector('.products');
-var btns = btnContainer.getElementsByClassName("category__name");
+const btnContainer = document.querySelector('.products');
+const btns = btnContainer.getElementsByClassName("category__name");
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
+    let current = document.getElementsByClassName("active");
+    let count = document.querySelectorAll('.category__count');
     current[0].className = current[0].className.replace(" active", "");
+    count[0].className = count[0].className.replace(" active", "");
     this.className += " active";
+    count.className += " active";
   });
 }
