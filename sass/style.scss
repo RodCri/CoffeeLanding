@@ -21,7 +21,7 @@ body{
   background: url('../img/home.png') no-repeat top right;
   background-size: 50% 100%;
   background-color: v.$bg-header;
-  height: 1000px;
+  max-height: 1000px;
   object-fit: cover;
   margin: 0 auto;
   position: relative;
@@ -46,6 +46,9 @@ body{
       align-items: center;
       list-style: none;
       gap: 30px;
+      @media(max-width:700px){
+        display: none;
+      }
       .option__item{
         border-right: 2px solid #eae7e7;
         padding: 0 20px;
@@ -70,7 +73,10 @@ body{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 0 40px;
+    padding: 40px 40px;
+    @media(max-width:1040px){
+      height: auto;
+    }
     &::after{
       content: '';
       width: 250px;
@@ -81,11 +87,20 @@ body{
       top: calc(50% - 125px);
       left: calc(50% - 125px);
       object-fit: cover;
+      @media(max-width:970px){
+        height: 100px;
+        width: 100px;
+        top: calc(50% - 50px);
+      left: calc(50% - 50px);
+      }
     }
     &__title{
       font-size: 7rem;
       margin-bottom: 10px;
       line-height: 1.5;
+      @media(max-width:970px){
+        font-size: 4rem;
+      }
       .title-point{
         color: v.$first-color-alt;
       }
@@ -108,16 +123,25 @@ body{
           font-size: 5rem;
           color: v.$first-color-alt;
           font-weight: 700;
+          @media(max-width:970px){
+            font-size: 3rem;
+          }
         }
         &__name{
           font-size: 2rem;
           margin: 25px 0 20px;
           font-weight: 700;
+          @media(max-width:970px){
+            font-size: 1.6rem;
+          }
         }
         &__description{
           font-size: 2rem;
           color: v.$text-color;
           line-height: 1.5;
+          @media(max-width:970px){
+            font-size: 1.6rem;
+          }
         }
       }
     }
@@ -136,6 +160,8 @@ body{
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
       .header__title{
         width: 500px;
         display: flex;
@@ -162,7 +188,9 @@ body{
       display: flex;
       justify-content: space-between;
       @media(max-width:920px){
-        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
       }
       .card{
         width: 400px;
@@ -177,6 +205,9 @@ body{
           position: absolute;
           left: 0;
           top: calc(50% - 70px);
+          @media(max-width:970px){
+            display: none;
+          }
         }
         &__icon{
           width: 100px;
@@ -220,11 +251,19 @@ body{
       margin-top: 50px;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      @media(max-width:700px){
+        justify-content: center;
+      }
       .separator{
         content: '';
         width: 2px;
         height: 50px;
         background-color: v.$text-color;
+        @media(max-width:700px){
+          display: none;
+        }
       }
       .category{
         display: flex;
@@ -343,6 +382,10 @@ body{
           left: calc(100% - 65px);
           object-fit: cover;
           border-radius: 10px;
+          @media(max-width:600px){
+            bottom: 0;
+            left: 0;
+          }
         }
         .quality{
           max-width: 380px;
@@ -428,7 +471,7 @@ body{
   }
   .blog{
     width: 90%;
-    margin: 140px auto;
+    margin: 140px auto 50px;
     &__header{
       margin-bottom: 60px;
       .blog__title{
@@ -445,6 +488,8 @@ body{
       display: flex;
       gap: 60px;
       padding-bottom: 90px;
+      flex-wrap: wrap;
+      justify-content: center;
       .post{
         width: 400px;
         &__figure{
@@ -514,6 +559,89 @@ body{
           }
         }
       }
+    }
+  }
+}
+.footer{
+  width: 80%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 0;
+  &__logo{
+    font-size: 3rem;
+    color: v.$body-color;
+    margin-bottom: 20px;
+  }
+  &__contact{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 80px;
+    border-bottom: 1.5px solid v.$text-color;
+    flex-wrap: wrap;
+    gap: 20px;
+    .contact__form{
+     .form__description{
+        color: v.$text-color;
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+      } 
+      .form__footer{
+        display: flex;
+        gap: 10px;
+        .address{
+          width: 220px;
+          height: 50px;
+          padding: 0 20px;
+          border: none;
+          border-radius: 6px;
+          color: v.$text-color;
+          font-size: 1.2rem;
+          outline: none;
+        }
+        .form__btn{
+          width: 50px;
+          height: 50px;
+          background: url('../img/top-right.png') no-repeat center;
+          background-color: v.$first-color-alt;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          &:hover{
+            background-color: v.$text-color;
+          }
+        }
+      }
+    }
+    .contact{
+      &__title{
+        color: #eae7e7;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+      }
+      &__info{
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+        color: v.$text-color;
+      }
+    }
+  }
+  .social{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    &__redes{
+      .icon-social{
+        margin-right: 10px;
+        cursor: pointer;
+        &:hover{
+          transform: translateY(-5px);
+          transition: all .3s ease;
+        }
+      }
+    }
+    &__copy{
+      color: #eae7e7;
+      font-size: 1.4rem;
     }
   }
 }
